@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #bg{
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100px;
+        }
+        #text{
+            width: 360px;
+            height: 400px;
+            color: black;
+            margin-left: 100px;
+            margin-top: 80px;
+            text-align: center;
+            padding-top: 40px;
+            border-radius: 40px;
+            }
+    </style>
+</head>
+<body id="bg" style="background-image:url('{% static 'image/img2.jpg' %}');">
+
+{% if data %}
+<div id="text" style="background-color: aqua;">
+    {% for i in data %}
+        <h3>Bank Name</h3>
+        {{i.bankname}}<br><br>
+        <h3>Branch</h3>
+        {{i.branch}}<br><br>
+        <h3>IFSC Code</h3>
+        {{i.IFSC}}
+
+    {% endfor %}
+</div>
+    {% else %}
+        <a href="bankregister" style=" color: white; font-size: large; margin-left: 1050px; text-decoration: none; position: absolute; top: 20px;">Register</a>
+
+    {% endif %}
+
+<a href="{% url 'logout' %}" style="color: white; font-size: large; position: absolute; left: 1230px; top: 15px; text-decoration: none;">Log out</a>
+</body>
+</html>

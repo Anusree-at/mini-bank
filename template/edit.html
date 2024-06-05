@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+         #bg{
+            width:50px;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+        .form1{
+            width: 300px;
+            height: 50px;
+            margin-left: 100px;
+            margin-top: 20px;
+        }
+        .form1 input{
+            width: 200px;
+            height: 21px;
+            border: 1px solid;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            background-color: aqua;
+
+        }
+
+        #text{
+            width: 505px;
+            height: 370px;
+            color: black;
+            margin-left: 100px;
+            margin-top: 100px;
+            text-align: center;
+            padding-top: 40px;
+            border-radius: 40px;
+            }
+         .box1{
+            margin-left: -230px;
+        }
+        .box2{
+            margin-left: 165px;
+            margin-top: -210px;
+        }
+    </style>
+
+</head>
+<body id="bg" style="background-image:url('{% static 'image/img2.jpg' %}');">
+ <div id="text" style="background-color: aqua;">
+     <h1>Edit Profile</h1>
+    <form action="edituser" method="post" enctype="multipart/form-data" class="form1">
+        {% csrf_token %}
+        <div class="box1">
+        <input type="text" name="first_name" value="{{data.first_name }}"><br><br>
+        <input type="text" name="last_name" value="{{data.last_name }}"><br><br>
+        <input type="email" name="email" value="{{ data.email }}"><br><br>
+        <input type="text" name="phone_number" value="{{ data.phone_number }}"><br><br>
+        <input type="number" name="adhar_number" value="{{ data.adhar_number }}"><br><br>
+        </div>
+        <div class="box2">
+        <input type="number" name="pan_card" value="{{ data.pan_card }}"><br><br>
+        <input type="number" name="pin" value="{{ data.pin }}"><br><br>
+        <input type="text" name="account_number" value="{{ data.account_number }}"><br><br>
+        <input type="text" name="username" value="{{ data.username }}"><br><br>
+        <input type="file" name="image" value="{{ data.image }}"><br><br><br>
+        </div>
+        <input type="submit" value="Edit" style="width: 100px; background-color: teal;">
+
+         </form>
+ </div>
+<a href="logout" style="color: white; font-size: large; position: absolute; left: 1245px; top: 15px;  text-decoration: none;">Log out</a>
+</body>
+</html>

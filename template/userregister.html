@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     {% load static %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+         #bg{
+           background-repeat: no-repeat;
+<!--               background-size: cover;-->
+            height: 100px;
+        }
+        .form1{
+            width: 200px;
+            height: 40px;
+            margin-left: 250px;
+            margin-top: 5px;
+        }
+        .form1 input{
+            width: 300px;
+            height: 20px;
+        }
+        .submit:hover{
+            background-color: aqua-blue;
+        }
+        input-submit{
+            width: 110px;
+        }
+        #text{
+            width: 846px;
+            height: 545px;
+            color: black;
+            margin-left: 480px;
+            margin-top: 5px;
+            text-align: center;
+            padding-top: 40px;
+            border-radius: 40px;
+            }
+        .box1{
+            margin-left: -230px;
+        }
+        .box2{
+            margin-left: 200px;
+            margin-top: -264px;
+        }
+    </style>
+</head>
+
+<body id="bg" style="background-image:url('{% static 'image/img1.jpg' %}');">
+ <div id="text" style="background-color: aqua;">
+     <h1>Register</h1>
+
+     <form action="register" method="post" class="form1" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="box1">
+        <input type="text" name="first_name" placeholder="First Name"><br><br>
+        <input type="text" name="last_name" placeholder="Last Name"><br><br>
+        <input type="email" name="email" placeholder="Email"><br><br>
+        <input type="text" name="phone_number" placeholder="Phone number"><br><br>
+        <input type="number" name="adhar_number" placeholder="Adhar number"><br><br>
+        <input type="number" name="pan_card" placeholder="pan card"><br><br>
+     </div>
+     <div class="box2">
+        <input type="number" name="pin" placeholder="pin"><br><br>
+        <input type="text" name="account_number" placeholder="Account Number"><br><br>
+        <input type="text" name="username" placeholder="User name"><br><br>
+        <input type="text" name="password" placeholder="Password"><br><br>
+        <input type="text" name="minimum_balance" placeholder="Minimum balance"><br><br>
+        <input type="file" name="image" width="100"><br><br><br><br>
+     </div>
+        <input type="submit" value="Register" style="background-color: teal; width: 100px; margin-left: 100px;">
+     </form>
+</div>
+</body>
+</html>

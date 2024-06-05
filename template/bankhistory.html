@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <style>
+         #bg{
+            background-repeat: no-repeat;
+<!--               background-size: cover;-->
+            height: 100px;
+        }
+         #text{
+            width: 860px;
+            height: 509px;
+            color: black;
+            margin-left: 474px;
+            margin-top: 63px;
+            text-align: center;
+            padding-top: 40px;
+
+            font-size: medium;
+            }
+         #empty{
+            background-color: aqua;
+            height: 63px;
+            width: 1342px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+         }
+<!--         table{-->
+<!--            width: 500px;-->
+<!--            height: 400px;-->
+<!--            font-size: medium;-->
+<!--            margin-left: 30px;-->
+<!--         }-->
+
+         .table1{
+            width: 580px;
+            height: 150px;
+            font-size: large;
+            margin-left: 90px;
+            margin-top: -60px;
+
+
+
+         }
+         table tr{
+
+            margin-left: 30px;
+
+         }
+     </style>
+</head>
+<body id="bg" style="background-image:url('{% static 'image/img1.jpg' %}');">
+     <div id="text" style="background-color: aqua;">
+         <img src="{{ data.image.url }}" width="80px;"  height="80px" style="border-radius: 50%;">
+
+     <table class="table1" style="border: 1px solid; border-color: teal;">
+         <tr style="background-color: teal; height: 30px;">
+
+             <th>Date</th>
+             <th>Details</th>
+             <th>Amount</th>
+         </tr>
+
+     {% for i in data %}
+         <tr>
+             <td>{{ i.date }}</td>
+             <td>{{ i.details }}</td>
+             <td>{{ i.history_amount }}</td>
+         </tr>
+         {% endfor %}
+     </table>
+
+
+
+
+
+
+         <!--
+{% for i in data %}-->
+<!--        <h3>Date:</h3>-->
+<!--        {{ i.date }}-->
+<!--        <h3>Details:</h3>-->
+<!--        {{ i.details }}-->
+<!--        <h3>Amount:</h3>-->
+<!--        {{ i.history_amount }}-->
+<!--    {% endfor %}-->
+
+
+    </div>
+    <div id="empty">
+
+    </div>
+     <a href="logout" style="color: black; font-size: large; position: absolute; left: 1230px; top: 15px; text-decoration: none;">Log out</a>
+
+
+
+</body>
+</html>

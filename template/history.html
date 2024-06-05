@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <style>
+         #bg{
+
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+          #text{
+            width: 450px;
+            height: 480px;
+            color: black;
+            margin-left: 100px;
+            margin-top: 60px;
+            text-align: center;
+            padding-top: 40px;
+            border-radius: 20px;
+            font-size: medium;
+            }
+         table{
+            width: 320px;
+            height: 40px;
+            font-size: medium;
+            margin-left: 30px;
+         }
+
+         .table1{
+            width: 300px;
+            height: 70px;
+            font-size: large;
+            margin-left: 90px;
+
+         }
+         table tr{
+
+            margin-left: 30px;
+
+         }
+     </style>
+</head>
+<body id="bg" style="background-image:url('{% static 'image/img2.jpg' %}');">
+     <div id="text" style="background-color: aqua;">
+     <table class="table1">
+         <tr>
+             <th>Date</th>
+             <th>Details</th>
+             <th>Amount</th>
+         </tr>
+     </table><hr style="width: 400px;">
+     {% for i in data %}
+     <table>
+         <tr>
+             <td>{{ i.date }}</td>
+             <td>{{ i.details }}</td>
+             <td>{{ i.history_amount }}</td>
+         </tr>
+     </table>
+     {% endfor %}
+    </div>
+<a href="logout" style="color: white; font-size: large; position: absolute; left: 1245px; top: 15px;  text-decoration: none;">Log out</a>
+</body>
+</html>

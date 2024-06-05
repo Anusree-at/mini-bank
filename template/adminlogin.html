@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     {% load static %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+         #bg{
+            background-repeat: no-repeat;
+<!--            background-size: cover;-->
+            height: 100px;
+        }
+         .form1{
+            margin-left: 210px;
+            margin-top: 250px;
+            position: absolute;
+            left: 500px;
+            top: -30px;
+
+
+        }
+        .form1 input{
+            width: 290px;
+            height: 21px;
+            border: 1px solid;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            background-color: aqua;
+
+
+        }
+        #text{
+            width: 400px;
+            height: 350px;
+            color: black;
+            margin-left: 650px;
+            margin-top: 80px;
+            text-align: center;
+            padding-top: 40px;
+            border-radius: 40px;
+            }
+    </style>
+</head>
+<body id="bg" style="background-image:url('{% static 'image/img1.jpg' %}');">
+    <div id="text" style="background-color: aqua;">
+        <h1>Login</h1>
+        <form action="" method="post" class="form1">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username"><br><br>
+            <input type="text" name="password" placeholder="Password"><br><br><br>
+            <input type="submit" value="login" placeholder="login" style="width: 100px; background-color: teal;">
+        </form>
+        <a href="{% url 'register' %}" style="color: black; position: absolute; top: 400px; left: 740px; text-decoration: none;">Don't have an account? Register</a>
+
+    </div>
+
+</body>
+</html>

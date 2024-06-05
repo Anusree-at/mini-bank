@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Site{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        #text{
+            width: 450px;
+            height: 250px;
+            color: black;
+            margin-left: 100px;
+            margin-top: 100px;
+            text-align: center;
+            padding-top: 40px;
+            border-radius: 20px;
+            font-size: medium;
+            }
+         #bg{
+            width:50px;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            }
+    </style>
+</head>
+
+<body id="bg" style="background-image:url('{% static 'image/img2.jpg' %}');">
+   <nav class="navbar navbar-expand-lg navbar-light " style="width: 1342px; background-color: aqua;">
+   <div class="container">
+    <a class="navbar-brand" href="userhome">HOME</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#"> <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Deposit" style="color: black; font-size: large;">Deposit</a>
+        </li>
+        <!-- Add more menu items as needed -->
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="withdrawal" style="color: black; font-size: large;">Withdraw</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="">mnj</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Withdraw</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+
+
+    <div id="text" style="background-color: aqua;">
+        <h4>Account Number</h4>
+            {% if id %}
+                {{ id.account_number }}
+            {% endif %}
+        <h4>Available Balance</h4>
+            {% if id %}
+                {{ id.minimum_balance }}
+            {% endif %}<br><br>
+        <a href="more"><button style="background-color: aqua; color: blue; border: none; position: absolute; top: 360px; left: 490px;">more</button></a>
+        <a href="viewhistory"><button style="background-color: aqua; color: blue; border: none; position: absolute; top: 360px; left: 110px;">View History</button></a>
+    </div>
+   <a href="logout" style="color: black; font-size: large; position: absolute; left: 1245px; top: 15px;  text-decoration: none;">Log out</a>
+   <div style="color: white; margin-top: -330px; margin-left: 10px; width: 200px; "><h2>Horizon Bank</h2></div>
+   <div style="color: white; margin-top: -45px; margin-left: 550px; width: 200px;"><h2>Horizon Bank</h2></div>
+   <div style="color: white; margin-top: -45px; margin-left: 1080px; width: 200px; "><h2>Horizon Bank</h2></div>
+
+   <!-- Bootstrap JS and jQuery (optional, if you want to use Bootstrap's JavaScript components) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking Interface</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    /* Custom styles */
+        body {
+      background-color: #f8f9fa; /* Light gray background */
+    }
+
+    .container {
+      background-color: #fff; /* White background for container */
+      border-radius: 10px; /* Rounded corners for container */
+      padding: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+    }
+
+    .button-group {
+      margin-top: 30px; /* Reduced margin-top */
+      text-align: center;
+
+    }
+
+    .form-group {
+      margin-top: 20px;
+    }
+
+    .modal-content {
+      background-color: #fff; /* White background for modal content */
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+    }
+
+  </style>
+</head>
+<body id="bg" style="background-image:url('{% static 'image/pic1.jpg' %}');">
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+<!--        <h1 class="text-center">UNION BANK OF INDIA</h1> &lt;!&ndash; Added heading here &ndash;&gt;-->
+        <div class="button-group">
+           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#withdrawModal">Withdraw</button>
+           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#depositModal">Deposit</button>
+           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#balanceModal">Balance</button><br><br>
+          {% if balance %}
+            Total Available Balance is {{ balance.minimum_balance}}
+          {% endif %}
+          {% if deposit %}
+            {{ deposit }}
+          {% endif %}
+          {% if withdrew %}
+            {{ withdrew }}
+          {% endif %}
+          {% if condition %}
+            {{ condition }}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Withdraw Modal -->
+  <div class="modal fade" id="withdrawModal" tabindex="-1" role="dialog" aria-labelledby="withdrawModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="withdrawModalLabel">Withdraw</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="withdrawal" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <label>ACCOUNT NUMBER</label>
+              <input type="text" name="accountnumber" class="form-control">
+               </div>
+            <div class="form-group">
+              <label>AMOUNT</label>
+              <input type="text" name="amount" class="form-control">
+              <input type="submit">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Deposit Modal -->
+  <div class="modal fade" id="depositModal" tabindex="-1" role="dialog" aria-labelledby="depositModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="depositModalLabel">Deposit</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="Deposit" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <label>ACCOUNT NUMBER</label>
+              <input type="text" name="accountnumber" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>AMOUNT</label>
+              <input type="text" name="depositamount" class="form-control">
+              <input type="submit">
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Balance Modal -->
+  <div class="modal fade" id="balanceModal" tabindex="-1" role="dialog" aria-labelledby="balanceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="balanceModalLabel">Balance</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="enquiry" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <label>ACCOUNT NUMBER</label>
+              <input type="text" name="accountnumber" class="form-control">
+              <input type="submit">
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+</body>
+</html>

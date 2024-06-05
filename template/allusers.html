@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #bg{
+            background-repeat: no-repeat;
+<!--               background-size: cover;-->
+            height: 100px;
+        }
+        #empty{
+        background-color: aqua;
+        height: 65px;
+        width: 1342px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+
+    }
+        .table1{
+            width: 400px;
+            height: 200px;
+            font-size: large;
+            margin-left: 30px;
+            margin-top: -1px;
+
+         }
+        #text{
+            width: 550px;
+            height: 400px;
+            color: black;
+            margin-left: 560px;
+            margin-top: 130px;
+            text-align: center;
+            padding-top: 40px;
+            border-radius: 20px;
+            font-size: medium;
+            }
+        .view{
+            font-size: large;
+            margin-left: 870px;
+            margin-top: -390px;
+        }
+        .form1 input{
+            width: 480px;
+            height: 34px;
+            margin-left: 565px;
+            position: absolute;
+            top: 78px;
+            background-color: aqua;
+            border-radius: 5%;
+<!--            border: 1px solid;-->
+<!--            border-top: none;-->
+<!--            border-left: none;-->
+<!--            border-right: none;-->
+
+<!--        .form1{-->
+<!--            margin-left: 210px;-->
+<!--            margin-top: 100px;-->
+<!--            position: absolute;-->
+<!--            left: 500px;-->
+<!--            top: -30px;-->
+        }
+    </style>
+</head>
+<body id="bg" style="background-image:url('{% static 'image/img1.jpg' %}');">
+<div id="text" style="background-color: aqua;">
+<table class="table1">
+    <tr>
+             <th style="position: static;">   </th>
+             <th style="position: static;">User Name</th>
+
+
+    </tr>
+    {% for i in all %}
+        <tr>
+            <td><img src="{{ i.image.url }}" width="50px;"  height="50px" style="border-radius: 50%;"><td>
+            <td>{{ i.first_name }}<td>
+            <td><a href="{% url 'user_view' id=i.id %}"><button style="background-color: teal; border-radius: 35%;">View</button></a><td>
+            <td><a href="{% url 'bankhistory' id=i.id %}"><button style="background-color: teal; border-radius: 35%;">History</button></a><td>
+            </tr>
+
+    {% endfor %}
+</table>
+</div>
+    <div id="empty">
+
+    </div>
+<a href="logout" style="color: black; font-size: large; position: absolute; left: 1230px; top: 15px;  text-decoration: none;">Log out</a>
+<div class="view">
+    <b>View More</b>
+</div>
+<form action="Search" method="post" class="form1">
+    {% csrf_token %}
+    <input type="text" name="search" placeholder="Search user by Name">
+    <input type="submit" value="search" style="width: 50px; margin-left: 1055px; margin-top: 2px;">
+</form>
+
+
+<table class="table1">
+
+    {% for i in data %}
+        <tr style="position: absolute; left: 600px; top: 250px; width: 500px;">
+            <td><img src="{{ i.image.url }}" width="50px;"  height="50px" style="border-radius: 50%;"><td>
+            <td>{{ i.first_name }}<td>
+            <td><a href="{% url 'user_view' id=i.id %}"><button style="background-color: teal; border-radius: 35%;">View</button></a><td>
+            <td><a href="{% url 'bankhistory' id=i.id %}"><button style="background-color: teal; border-radius: 35%;">History</button></a><td>
+        </tr>
+
+    {% endfor %}
+</table>
+
+</body>
+</html>

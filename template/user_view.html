@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #bg{
+             background-repeat: no-repeat;
+<!--               background-size: cover;-->
+            height: 100px;
+
+        }
+    #text{
+            width: 450px;
+            height: 440px;
+            color: black;
+            margin-left: 600px;
+            margin-top: 90px;
+            text-align: center;
+            padding-top: 40px;
+            border-radius: 20px;
+            font-size: medium;
+            }
+    #empty{
+        background-color: aqua;
+        height: 65px;
+        width: 1342px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+</style>
+<body id="bg" style="background-image:url('{% static 'image/img1.jpg' %}');">
+    <div id="text" style="background-color: aqua;">
+        <img src="{{ view.image.url }}" width="80px;"  height="80px" style="border-radius: 50%;">
+        <h3>Email</h3>
+        {{ view.email }}
+        <h3>Phone number</h3>
+        {{ view.phone_number }}
+        <h3>Aadhar number</h3>
+        {{ view.adhar_number }}
+        <h3>PAN number</h3>
+        {{ view.pan_card }}
+    </div>
+    <div id="empty">
+
+    </div>
+<a href="{% url 'logout' %}" style="color: black; font-size: large; position: absolute; left: 1230px; top: 15px; text-decoration: none;">Log out</a>
+</body>
+</html>
